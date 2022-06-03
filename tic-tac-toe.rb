@@ -14,5 +14,8 @@ class Board
   def is_cell_empty?(row, column)
     return board[row][column] == nil
   end
-
+  
+  def is_board_full?
+    board.flatten.none?(nil)
+  end
 end
