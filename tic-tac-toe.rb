@@ -5,7 +5,14 @@ class Player
 end
 
 class Board
+  attr_accessor :board
+
   def initialize
-    self.board = Array.new(3, Array.new(3, nil))
+    @board = Array.new(3, Array.new(3, nil))
   end
+
+  def is_cell_empty?(row, column)
+    return board[row][column] == nil
+  end
+
 end
