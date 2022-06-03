@@ -4,5 +4,8 @@ class Player
   end
 end
 
-p1 = Player.new('X')
-p2 = Player.new('O')
+class Board
+  def initialize
+    self.board = Array.new(3, Array.new(3, nil))
+  end
+end
