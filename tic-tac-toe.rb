@@ -5,7 +5,7 @@ class Player
     @mark = mark
   end
 
-  def fill_cell(row, column, board)    
+  def fill_cell(board, row, column)    
     board.board[row][column] = mark
   end
 end
