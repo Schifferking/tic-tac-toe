@@ -1,6 +1,12 @@
 class Player
+  attr_reader :mark
+
   def initialize(mark)
     @mark = mark
+  end
+
+  def fill_cell(row, column, board)    
+    board.board[row][column] = mark
   end
 end
 
@@ -8,7 +14,7 @@ class Board
   attr_accessor :board
 
   def initialize
-    @board = Array.new(3, Array.new(3, nil))
+    @board = Array.new(3) {Array.new(3, nil)}
   end
 
   def is_cell_empty?(row, column)
@@ -33,5 +39,6 @@ class Board
       print "\n"
       print " ---------\n" if row_index <= 1
     end
+    puts ""
   end
 end
