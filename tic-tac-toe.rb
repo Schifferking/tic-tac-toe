@@ -18,4 +18,20 @@ class Board
   def is_board_full?
     board.flatten.none?(nil)
   end
+
+  def display_board
+    board.each_with_index do |row, row_index|
+      print " "
+      row.each_with_index do |column, column_index|
+        if is_cell_empty?(row_index, column_index)
+          print "  "
+        else
+          print board[row_index][column_index] + " "
+        end
+        print "| " if column_index <= 1
+      end
+      print "\n"
+      print " ---------\n" if row_index <= 1
+    end
+  end
 end
