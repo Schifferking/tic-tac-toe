@@ -26,8 +26,8 @@ class Board
       "bottom right" => [2, 2]}
   end
 
-  def is_cell_empty?(row, column)
-    return board[row][column] == nil
+  def is_cell_filled?(row, column)
+    return board[row][column] != nil
   end
   
   def is_board_full?
@@ -39,7 +39,7 @@ class Board
     board.each_with_index do |row, row_index|
       print " "
       row.each_with_index do |column, column_index|
-        if is_cell_empty?(row_index, column_index)
+        if !is_cell_filled?(row_index, column_index)
           print "  "
         else
           print board[row_index][column_index] + " "
@@ -61,19 +61,28 @@ def game
   p1 = Player.new('X')
   p2 = Player.new('O')
   b = Board.new
+  b.board[1][1] = 'O'
+
+  #Start of turn
 
   b.display_board
   puts "Where do you want to place your mark?"
   p_direction = gets.chomp.downcase
   p_coordinates = b.get_coordinates(p_direction)
   puts ""
-  while p_coordinates == "unknown"
+  
+  while p_coordinates == "unknown" || b.is_cell_filled?(p_coordinates.first, p_coordinates.last)
     puts "Please enter a valid direction"
     p_direction = gets.chomp.downcase
     p_coordinates = b.get_coordinates(p_direction)
     puts ""
+    if p_coordinates != "unknown"
+      if !b.is_cell_filled?(p_coordinates.first, p_coordinates.last)
+        break
+      end
+    end
   end
-
+  
   p1.fill_cell(b, p_coordinates.first, p_coordinates.last)
   b.display_board
 end
