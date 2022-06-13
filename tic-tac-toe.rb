@@ -8,6 +8,10 @@ class Player
   def fill_cell(board, row, column)    
     board.board[row][column] = mark
   end
+
+  def to_s
+    @mark
+  end
 end
 
 class Board
@@ -61,30 +65,37 @@ def game
   p1 = Player.new('X')
   p2 = Player.new('O')
   b = Board.new
-  b.board[1][1] = 'O'
 
-  #Start of turn
-
-  b.display_board
-  puts "Where do you want to place your mark?"
-  p_direction = gets.chomp.downcase
-  p_coordinates = b.get_coordinates(p_direction)
-  puts ""
+  [p1, p2].cycle.first(9).each do |player|
+    # Start of round
+    puts "#{player}'s turn"    
   
-  while p_coordinates == "unknown" || b.is_cell_filled?(p_coordinates.first, p_coordinates.last)
-    puts "Please enter a valid direction"
+    b.display_board
+    puts "Where do you want to place your mark?"
     p_direction = gets.chomp.downcase
     p_coordinates = b.get_coordinates(p_direction)
     puts ""
-    if p_coordinates != "unknown"
-      if !b.is_cell_filled?(p_coordinates.first, p_coordinates.last)
-        break
+    
+    # Validate player's input
+    while p_coordinates == "unknown" || b.is_cell_filled?(p_coordinates.first, p_coordinates.last)
+      puts "Please enter a valid direction"
+      p_direction = gets.chomp.downcase
+      p_coordinates = b.get_coordinates(p_direction)
+      puts ""
+      if p_coordinates != "unknown"
+        if !b.is_cell_filled?(p_coordinates.first, p_coordinates.last)
+          break
+        end
       end
     end
+    
+    player.fill_cell(b, p_coordinates.first, p_coordinates.last)
   end
-  
-  p1.fill_cell(b, p_coordinates.first, p_coordinates.last)
+
+  # Tie
   b.display_board
+
+  puts "It's a tie!"
 end
 
 game
