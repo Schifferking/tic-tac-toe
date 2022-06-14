@@ -15,7 +15,7 @@ class Player
 end
 
 class Board
-  attr_accessor :board
+  attr_accessor :board, :lines
 
   def initialize
     @board = Array.new(3) {Array.new(3, nil)}
@@ -59,6 +59,31 @@ class Board
   def get_coordinates(direction)
     @COORDINATES.fetch(direction, "unknown")
   end
+
+  def update_lines
+    @lines = {"top row" => board[0],
+      "middle row" => board[1],
+      "bottom row" => board[2],
+      "left column" => [board[0][0], board[1][0], board[2][0]],
+      "middle column" => [board[0][1], board[1][1], board[2][1]],
+      "right column" => [board[0][2], board[1][1], board[2][2]],
+      "left diagonal" => [board[0][0], board[1][1], board[2][2]],
+      "right diagonal" => [board[0][2], board[1][1], board[2][0]],}
+  end
+
+  def is_line_filled?
+    update_lines
+
+    lines.each do |key, value|
+       if lines[key].all?('X')
+         return true
+       elsif lines[key].all?('O')
+         return true
+       end
+    end
+    
+    return false
+  end  
 end
 
 def game
@@ -90,12 +115,22 @@ def game
     end
     
     player.fill_cell(b, p_coordinates.first, p_coordinates.last)
+
+    # Winner
+    if b.is_line_filled?
+      b.display_board
+      
+      puts "#{player} won!"
+      break
+    end
   end
 
   # Tie
-  b.display_board
+  if !b.is_line_filled?
+    b.display_board
 
-  puts "It's a tie!"
+    puts "It's a tie!"
+  end
 end
 
 game
