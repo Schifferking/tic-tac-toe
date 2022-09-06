@@ -6,19 +6,23 @@ class Player
   end
 
   def fill_cell(board, row, column)
-    board.board[row][column] = mark
+    board.fill_cell(row, column, mark)
   end
 
   def to_s
     @mark
+  end
+
+  def enter_coordinates
+    gets.chomp.downcase
   end
 end
 
 class Board
   attr_accessor :board, :lines
 
-  def initialize
-    @board = Array.new(3) { Array.new(3, nil) }
+  def initialize(board = Array.new(3) { Array.new(3, nil) })
+    @board = board
     @COORDINATES = { 'top left' => [0, 0],
                      'top center' => [0, 1],
                      'top right' => [0, 2],
@@ -30,23 +34,27 @@ class Board
                      'bottom right' => [2, 2] }
   end
 
-  def is_cell_filled?(row, column)
-    return board[row][column] != nil
+  def fill_cell(row, column, mark)
+    board[row][column] = mark
   end
 
-  def is_board_full?
-    board.flatten.none?(nil)
+  def cell_filled?(row, column)
+    !board[row][column].nil?
+  end
+
+  def board_full?
+    @board.flatten.none?(nil)
   end
 
   def display_board
     puts ''
     board.each_with_index do |row, row_index|
       print ' '
-      row.each_with_index do |column, column_index|
-        if !is_cell_filled?(row_index, column_index)
+      row.each_with_index do |_column, column_index|
+        if !cell_filled?(row_index, column_index)
           print '  '
         else
-          print board[row_index][column_index] + ' '
+          print "#{board[row_index][column_index]} "
         end
         print '| ' if column_index <= 1
       end
@@ -66,20 +74,16 @@ class Board
                'bottom row' => board[2],
                'left column' => [board[0][0], board[1][0], board[2][0]],
                'middle column' => [board[0][1], board[1][1], board[2][1]],
-               'right column' => [board[0][2], board[1][1], board[2][2]],
+               'right column' => [board[0][2], board[1][2], board[2][2]],
                'left diagonal' => [board[0][0], board[1][1], board[2][2]],
-               'right diagonal' => [board[0][2], board[1][1], board[2][0]], }
+               'right diagonal' => [board[0][2], board[1][1], board[2][0]] }
   end
 
-  def is_line_filled?
+  def line_filled?
     update_lines
 
-    lines.each do |key, value|
-      if lines[key].all?('X')
-        return true
-      elsif lines[key].all?('O')
-        return true
-      end
+    lines.each do |key, _value|
+      return true if lines[key].all?('X') || lines[key].all?('O')
     end
 
     false
@@ -97,27 +101,25 @@ def game
 
     b.display_board
     puts 'Where do you want to place your mark?'
-    p_direction = gets.chomp.downcase
+    p_direction = player.enter_coordinates
     p_coordinates = b.get_coordinates(p_direction)
     puts ''
 
     # Validate player's input
-    while p_coordinates == 'unknown' || b.is_cell_filled?(p_coordinates.first, p_coordinates.last)
+    while p_coordinates == 'unknown' || b.cell_filled?(p_coordinates.first, p_coordinates.last)
       puts 'Please enter a valid direction'
-      p_direction = gets.chomp.downcase
+      p_direction = player.enter_coordinates
       p_coordinates = b.get_coordinates(p_direction)
       puts ''
       if p_coordinates != 'unknown'
-        unless b.is_cell_filled?(p_coordinates.first, p_coordinates.last)
-          break
-        end
+        break unless b.cell_filled?(p_coordinates.first, p_coordinates.last)
       end
     end
 
     player.fill_cell(b, p_coordinates.first, p_coordinates.last)
 
     # Winner
-    if b.is_line_filled?
+    if b.line_filled?
       b.display_board
 
       puts "#{player} won!"
@@ -126,11 +128,9 @@ def game
   end
 
   # Tie
-  unless b.is_line_filled?
+  unless b.line_filled?
     b.display_board
 
     puts "It's a tie!"
   end
 end
-
-game
