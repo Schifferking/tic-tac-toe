@@ -97,6 +97,10 @@ class Board
     print ' ---------'
     print_empty_line
   end
+
+  def print_empty_space
+    print ' '
+  end
 end
 
 def game
