@@ -24,11 +24,8 @@ class Board
     puts ''
     board.each_with_index do |row, row_index|
       print ' '
-      row.each_with_index do |_column, column_index|
-        print_square_content(row_index, column_index)
-        print '| ' if column_index <= 1
-      end
-      print "\n"
+      display_row(row, row_index)
+      puts ''
       print " ---------\n" if row_index <= 1
     end
     puts ''
@@ -82,6 +79,13 @@ class Board
       print '  '
     else
       print "#{board[row][column]} "
+    end
+  end
+
+  def display_row(row, row_index)
+    row.each_with_index do |_, column_index|
+      print_square_content(row_index, column_index)
+      print '| ' if column_index <= 1
     end
   end
 end
