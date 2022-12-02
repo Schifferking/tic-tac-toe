@@ -21,14 +21,14 @@ class Board
   end
 
   def display_board
-    puts ''
+    print_empty_line
     board.each_with_index do |row, row_index|
       print ' '
       display_row(row, row_index)
-      puts ''
+      print_empty_line
       print " ---------\n" if row_index <= 1
     end
-    puts ''
+    print_empty_line
   end
 
   def get_coordinates(direction)
@@ -88,6 +88,10 @@ class Board
       print '| ' if column_index <= 1
     end
   end
+
+  def print_empty_line
+    puts ''
+  end
 end
 
 def game
@@ -134,3 +138,6 @@ def game
     puts "It's a tie!"
   end
 end
+
+b = Board.new
+b.display_board
