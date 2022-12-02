@@ -1,3 +1,5 @@
+require_relative '../lib/player'
+
 class Player
   attr_reader :mark
 
