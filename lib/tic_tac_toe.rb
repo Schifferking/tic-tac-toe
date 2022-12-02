@@ -26,7 +26,7 @@ class Board
       print ' '
       print_row(row, row_index)
       print_empty_line
-      print " ---------\n" if row_index <= 1
+      print_horizontal_line if row_index <= 1
     end
     print_empty_line
   end
@@ -91,6 +91,11 @@ class Board
 
   def print_empty_line
     puts ''
+  end
+
+  def print_horizontal_line
+    print ' ---------'
+    print_empty_line
   end
 end
 
