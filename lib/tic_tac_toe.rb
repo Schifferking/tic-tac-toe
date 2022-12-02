@@ -4,7 +4,7 @@ class Board
   attr_accessor :board, :lines
 
   def initialize
-    @board = Array.new(3) { Array.new(3, nil) }
+    create_board
     @COORDINATES = { 'top left' => [0, 0],
                      'top center' => [0, 1],
                      'top right' => [0, 2],
@@ -69,6 +69,12 @@ class Board
     end
 
     false
+  end
+
+  private
+
+  def create_board
+    @board = Array.new(3) { Array.new(3, nil) }
   end
 end
 
