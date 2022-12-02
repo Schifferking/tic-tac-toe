@@ -3,8 +3,8 @@ require_relative '../lib/player'
 class Board
   attr_accessor :board, :lines
 
-  def initialize(board = Array.new(3) { Array.new(3, nil) })
-    @board = board
+  def initialize
+    @board = Array.new(3) { Array.new(3, nil) }
     @COORDINATES = { 'top left' => [0, 0],
                      'top center' => [0, 1],
                      'top right' => [0, 2],
