@@ -24,7 +24,7 @@ class Board
     print_empty_line
     board.each_with_index do |row, row_index|
       print ' '
-      display_row(row, row_index)
+      print_row(row, row_index)
       print_empty_line
       print " ---------\n" if row_index <= 1
     end
@@ -82,7 +82,7 @@ class Board
     end
   end
 
-  def display_row(row, row_index)
+  def print_row(row, row_index)
     row.each_with_index do |_, column_index|
       print_square_content(row_index, column_index)
       print '| ' if column_index <= 1
@@ -138,6 +138,3 @@ def game
     puts "It's a tie!"
   end
 end
-
-b = Board.new
-b.display_board
