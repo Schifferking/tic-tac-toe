@@ -25,11 +25,7 @@ class Board
     board.each_with_index do |row, row_index|
       print ' '
       row.each_with_index do |_column, column_index|
-        if !cell_filled?(row_index, column_index)
-          print '  '
-        else
-          print "#{board[row_index][column_index]} "
-        end
+        print_square_content(row_index, column_index)
         print '| ' if column_index <= 1
       end
       print "\n"
@@ -79,6 +75,14 @@ class Board
       'bottom left' => [2, 0],
       'bottom center' => [2, 1],
       'bottom right' => [2, 2] }
+  end
+
+  def print_square_content(row, column)
+    if !cell_filled?(row, column)
+      print '  '
+    else
+      print "#{board[row][column]} "
+    end
   end
 end
 
