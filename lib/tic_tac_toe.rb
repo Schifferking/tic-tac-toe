@@ -23,7 +23,7 @@ class Board
   def display_board
     print_empty_line
     board.each_with_index do |row, row_index|
-      print ' '
+      print_empty_space
       print_row(row, row_index)
       print_empty_line
       print_horizontal_line if row_index <= 1
@@ -76,7 +76,8 @@ class Board
 
   def print_square_content(row, column)
     if !cell_filled?(row, column)
-      print '  '
+      print_empty_space
+      print_empty_space
     else
       print "#{board[row][column]} "
     end
