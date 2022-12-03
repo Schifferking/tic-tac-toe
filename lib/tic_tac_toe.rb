@@ -70,6 +70,12 @@ class Board
      obtain_cell_value(2, column)]
   end
 
+  def obtain_left_diagonal
+    [obtain_cell_value(0, 0),
+     obtain_cell_value(1, 1),
+     obtain_cell_value(2, 2)]
+  end
+
   private
 
   def create_board
