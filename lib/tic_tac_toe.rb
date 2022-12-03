@@ -1,6 +1,9 @@
 require_relative '../lib/player'
 require_relative '../lib/board'
 
+class TicTacToe
+end
+
 def game
   p1 = Player.new('X')
   p2 = Player.new('O')
