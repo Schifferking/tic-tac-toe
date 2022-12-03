@@ -35,7 +35,7 @@ class Board
     @COORDINATES.fetch(direction, 'unknown')
   end
 
-  def update_lines
+  def obtain_lines
     @lines = { 'top row' => board[0],
                'middle row' => board[1],
                'bottom row' => board[2],
@@ -47,7 +47,7 @@ class Board
   end
 
   def line_filled?
-    update_lines
+    obtain_lines
 
     lines.each do |key, _value|
       return true if lines[key].all?('X') || lines[key].all?('O')
