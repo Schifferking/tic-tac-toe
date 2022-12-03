@@ -29,10 +29,6 @@ class Board
     print_empty_line
   end
 
-  def get_coordinates(direction)
-    @COORDINATES.fetch(direction, 'unknown')
-  end
-
   def obtain_row_values(row)
     board[row]
   end
