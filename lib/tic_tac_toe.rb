@@ -56,6 +56,10 @@ class Board
     false
   end
 
+  def obtain_row_values(row)
+    board[row]
+  end
+
   private
 
   def create_board
