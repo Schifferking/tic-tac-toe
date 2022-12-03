@@ -1,5 +1,5 @@
 class Board
-  attr_accessor :board, :lines
+  attr_accessor :board
 
   def initialize
     create_board
