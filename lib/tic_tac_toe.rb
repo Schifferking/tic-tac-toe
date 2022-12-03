@@ -60,6 +60,10 @@ class Board
     board[row]
   end
 
+  def obtain_cell_value(row, column)
+    board[row][column]
+  end
+
   private
 
   def create_board
