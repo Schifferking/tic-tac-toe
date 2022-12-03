@@ -3,7 +3,6 @@ class Board
 
   def initialize
     create_board
-    @COORDINATES = directions_hash
   end
 
   def fill_cell(row, column, mark)
