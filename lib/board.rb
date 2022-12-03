@@ -44,16 +44,6 @@ class Board
                'right diagonal' => [board[0][2], board[1][1], board[2][0]] }
   end
 
-  def line_filled?
-    obtain_lines
-
-    lines.each do |key, _value|
-      return true if lines[key].all?('X') || lines[key].all?('O')
-    end
-
-    false
-  end
-
   def obtain_row_values(row)
     board[row]
   end
