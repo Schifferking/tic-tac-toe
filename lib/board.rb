@@ -33,17 +33,6 @@ class Board
     @COORDINATES.fetch(direction, 'unknown')
   end
 
-  def obtain_lines
-    @lines = { 'top row' => board[0],
-               'middle row' => board[1],
-               'bottom row' => board[2],
-               'left column' => [board[0][0], board[1][0], board[2][0]],
-               'middle column' => [board[0][1], board[1][1], board[2][1]],
-               'right column' => [board[0][2], board[1][2], board[2][2]],
-               'left diagonal' => [board[0][0], board[1][1], board[2][2]],
-               'right diagonal' => [board[0][2], board[1][1], board[2][0]] }
-  end
-
   def obtain_row_values(row)
     board[row]
   end
