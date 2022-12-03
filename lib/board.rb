@@ -60,18 +60,6 @@ class Board
     @board = Array.new(3) { Array.new(3, nil) }
   end
 
-  def directions_hash
-    { 'top left' => [0, 0],
-      'top center' => [0, 1],
-      'top right' => [0, 2],
-      'middle left' => [1, 0],
-      'middle center' => [1, 1],
-      'middle right' => [1, 2],
-      'bottom left' => [2, 0],
-      'bottom center' => [2, 1],
-      'bottom right' => [2, 2] }
-  end
-
   def print_square_content(row, column)
     if !cell_filled?(row, column)
       print_empty_space
