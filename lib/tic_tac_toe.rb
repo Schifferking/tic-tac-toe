@@ -77,10 +77,10 @@ class Board
   def print_square_content(row, column)
     if !cell_filled?(row, column)
       print_empty_space
-      print_empty_space
     else
-      print "#{board[row][column]} "
+      print board[row][column].to_s
     end
+    print_empty_space
   end
 
   def print_row(row, row_index)
