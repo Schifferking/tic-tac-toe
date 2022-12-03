@@ -76,6 +76,12 @@ class Board
      obtain_cell_value(2, 2)]
   end
 
+  def obtain_right_diagonal
+    [obtain_cell_value(0, 2),
+     obtain_cell_value(1, 1),
+     obtain_cell_value(2, 0)]
+  end
+
   private
 
   def create_board
