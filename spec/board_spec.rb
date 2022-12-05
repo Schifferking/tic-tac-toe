@@ -155,4 +155,31 @@ describe Board do
       end
     end
   end
+
+  describe '#obtain_column_values' do
+    subject(:board_column_test) { described_class.new }
+
+    it 'calls #obtain_cell_value three times' do
+      column = 1
+      expect(board_column_test).to receive(:obtain_cell_value).exactly(3).times
+      board_column_test.obtain_column_values(column)
+    end
+
+    context 'when the column is 2' do
+      subject(:board_column_two) { described_class.new }
+
+      before do
+        column = 2
+        x_mark = 'X'
+        board_column_two.board[1][column] = x_mark
+      end
+
+      it 'returns a list with the column values' do
+        x_mark = 'X'
+        column = 2
+        expected = [nil, x_mark, nil]
+        expect(board_column_two.obtain_column_values(column)).to eq expected
+      end
+    end
+  end
 end
