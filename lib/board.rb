@@ -17,7 +17,7 @@ class Board
     @board.flatten.none?(nil)
   end
 
-  def display_board
+  def print_board
     print_empty_line
     board.each_with_index do |row, row_index|
       print_empty_space
