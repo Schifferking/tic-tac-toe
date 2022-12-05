@@ -94,4 +94,35 @@ describe Board do
       end
     end
   end
+
+  describe '#obtain_row_values' do
+    context 'when the row parameter is equal to 0' do
+      subject(:board_row_zero) { described_class.new }
+
+      it "returns a list with the row's values" do
+        row = 0
+        expected = [nil, nil, nil]
+        expect(board_row_zero.obtain_row_values(row)).to eq expected
+      end
+    end
+
+    context 'when the row parameter is equal to 2' do
+      subject(:board_row_two) { described_class.new }
+
+      before do
+        x_mark = 'X'
+        row = 2
+        board_row_two.board[row][0] = x_mark
+        board_row_two.board[row][1] = x_mark
+        board_row_two.board[row][2] = x_mark
+      end
+
+      it "returns a list with the row's values" do
+        row = 2
+        x_mark = 'X'
+        expected = [x_mark, x_mark, x_mark]
+        expect(board_row_two.obtain_row_values(row)).to eq expected
+      end
+    end
+  end
 end
