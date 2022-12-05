@@ -125,4 +125,34 @@ describe Board do
       end
     end
   end
+
+  describe '#obtain_cell_value' do
+    context 'when row is 0 and column is 0' do
+      subject(:board_cell_zero_zero) { described_class.new }
+
+      it "returns the cell's value" do
+        row = 0
+        column = 0
+        expect(board_cell_zero_zero.obtain_cell_value(row, column)).to eq nil
+      end
+    end
+
+    context 'when row is 1 and column is 2' do
+      subject(:board_cell_one_two) { described_class.new }
+
+      before do
+        o_mark = 'O'
+        row = 1
+        column = 2
+        board_cell_one_two.board[row][column] = o_mark
+      end
+
+      it "returns the cell's value" do
+        row = 1
+        column = 2
+        expected = 'O'
+        expect(board_cell_one_two.obtain_cell_value(row, column)).to eq expected
+      end
+    end
+  end
 end
