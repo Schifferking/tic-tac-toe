@@ -9,6 +9,10 @@ class TicTacToe
     @player_o = Player.new('O')
     @board = Board.new
   end
+
+  def print_current_player_turn(player)
+    puts "#{player}'s turn"
+  end
 end
 
 def game
