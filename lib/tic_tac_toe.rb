@@ -22,7 +22,14 @@ class TicTacToe
     puts 'Please select a number between 1 and 9 to place a mark'
     puts '1 means the top left cell and 9 means the bottom right cell'
   end
+
+  def number?(input)
+    input == input.to_i.to_s
+  end
 end
+
+t = TicTacToe.new
+p t.number?('01')
 
 def game
   p1 = Player.new('X')
