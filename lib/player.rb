@@ -13,7 +13,7 @@ class Player
     @mark
   end
 
-  def enter_coordinates
+  def enter_input
     gets.chomp.downcase
   end
 end
