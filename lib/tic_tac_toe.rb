@@ -30,7 +30,14 @@ class TicTacToe
   def validate_number(number)
     number if number.between?(1, 9)
   end
+
+  def obtain_cell_value(row, column)
+    @board.obtain_cell_value(row, column)
+  end
 end
+
+t = TicTacToe.new
+p t.obtain_cell_value(0, 0)
 
 def game
   p1 = Player.new('X')
