@@ -26,10 +26,11 @@ class TicTacToe
   def number?(input)
     input == input.to_i.to_s
   end
-end
 
-t = TicTacToe.new
-p t.number?('01')
+  def validate_number(number)
+    number if number.between?(1, 9)
+  end
+end
 
 def game
   p1 = Player.new('X')
