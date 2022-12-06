@@ -2,6 +2,13 @@ require_relative '../lib/player'
 require_relative '../lib/board'
 
 class TicTacToe
+  attr_reader :player_x, :player_o
+
+  def initialize
+    @player_x = Player.new('X')
+    @player_o = Player.new('O')
+    @board = Board.new
+  end
 end
 
 def game
