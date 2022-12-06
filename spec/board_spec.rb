@@ -182,4 +182,19 @@ describe Board do
       end
     end
   end
+
+  describe '#obtain_left_diagonal' do
+    subject(:board_left_diagonal) { described_class.new }
+
+    it 'calls #obtain_cell_value three times' do
+      expect(board_left_diagonal)
+        .to receive(:obtain_cell_value).exactly(3).times
+      board_left_diagonal.obtain_left_diagonal
+    end
+
+    it 'returns a list with 3 elements' do
+      result = board_left_diagonal.obtain_left_diagonal
+      expect(result.length).to eq 3
+    end
+  end
 end
