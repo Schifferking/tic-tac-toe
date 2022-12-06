@@ -34,10 +34,11 @@ class TicTacToe
   def obtain_cell_value(row, column)
     @board.obtain_cell_value(row, column)
   end
-end
 
-t = TicTacToe.new
-p t.obtain_cell_value(0, 0)
+  def fill_cell(row, column, mark)
+    @board.fill_cell(row, column, mark)
+  end
+end
 
 def game
   p1 = Player.new('X')
