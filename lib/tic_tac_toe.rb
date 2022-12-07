@@ -68,6 +68,10 @@ class TicTacToe
     row, column = obtain_cell_coordinates(input_number)
     !cell_filled?(row, column)
   end
+
+  def obtain_current_player_input(current_player)
+    current_player.enter_input
+  end
 end
 
 def game
