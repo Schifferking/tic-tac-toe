@@ -27,6 +27,10 @@ class TicTacToe
     puts "It's a tie!"
   end
 
+  def print_winner_message(player_mark)
+    puts "#{player_mark}'s player wins!"
+  end
+
   def number?(input)
     input == input.to_i.to_s
   end
