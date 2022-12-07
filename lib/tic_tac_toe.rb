@@ -58,6 +58,16 @@ class TicTacToe
   def obtain_cell_coordinates(number)
     coordinates_hash[number]
   end
+
+  def validate_number(input)
+    return false unless number?(input)
+
+    input_number = input.to_i
+    return false unless number_in_range?(input_number)
+
+    row, column = obtain_cell_coordinates(input_number)
+    !cell_filled?(row, column)
+  end
 end
 
 def game
