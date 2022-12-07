@@ -23,6 +23,10 @@ class TicTacToe
     puts '1 means the top left cell and 9 means the bottom right cell'
   end
 
+  def print_tie_message
+    puts "It's a tie!"
+  end
+
   def number?(input)
     input == input.to_i.to_s
   end
