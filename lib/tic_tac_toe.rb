@@ -27,7 +27,7 @@ class TicTacToe
     input == input.to_i.to_s
   end
 
-  def validate_number(number)
+  def number_in_range?(number)
     number if number.between?(1, 9)
   end
 
