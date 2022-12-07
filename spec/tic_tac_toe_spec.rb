@@ -63,4 +63,15 @@ describe TicTacToe do
       expect(tic_tac_toe_cell_value.obtain_cell_value(row, column)).to be nil
     end
   end
+
+  describe '#fill_cell' do
+    subject(:tic_tac_toe_fill_cell) { described_class.new }
+
+    it 'returns the mark parameter' do
+      row = 0
+      column = 0
+      mark = 'O'
+      expect(tic_tac_toe_fill_cell.fill_cell(row, column, mark)).to eq mark
+    end
+  end
 end
