@@ -39,6 +39,10 @@ class TicTacToe
     @board.fill_cell(row, column, mark)
   end
 
+  def cell_filled?(row, column)
+    @board.cell_filled?(row, column)
+  end
+
   def coordinates_hash
     { 1 => [0, 0],
       2 => [0, 1],
