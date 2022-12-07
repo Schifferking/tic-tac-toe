@@ -55,6 +55,10 @@ class TicTacToe
     @board.board_full?
   end
 
+  def obtain_row(row)
+    @board.obtain_row_values(row)
+  end
+
   def coordinates_hash
     { 1 => [0, 0],
       2 => [0, 1],
