@@ -53,4 +53,14 @@ describe TicTacToe do
       end
     end
   end
+
+  describe '#obtain_cell_value' do
+    subject(:tic_tac_toe_cell_value) { described_class.new }
+
+    it 'returns a value given the parameters' do
+      row = 1
+      column = 2
+      expect(tic_tac_toe_cell_value.obtain_cell_value(row, column)).to be nil
+    end
+  end
 end
