@@ -72,6 +72,14 @@ class TicTacToe
   def obtain_current_player_input(current_player)
     current_player.enter_input
   end
+
+  def obtain_valid_coordinates(current_player)
+    loop do
+      print_prompt_message
+      input = obtain_current_player_input(current_player)
+      return obtain_cell_coordinates(input.to_i) if validate_number(input)
+    end
+  end
 end
 
 def game
