@@ -50,6 +50,10 @@ class TicTacToe
       8 => [2, 1],
       9 => [2, 2] }
   end
+
+  def obtain_cell_coordinates(number)
+    coordinates_hash[number]
+  end
 end
 
 def game
