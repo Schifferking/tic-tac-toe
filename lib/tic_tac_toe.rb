@@ -108,6 +108,10 @@ class TicTacToe
     def left_diagonal_coordinates
       [[0, 0], [1, 1], [2, 2]]
     end
+
+    def right_diagonal_coordinates
+      [[0, 2], [1, 1], [2, 0]]
+    end
 end
 
 def game
