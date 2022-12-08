@@ -83,6 +83,14 @@ class TicTacToe
     direction == 'left' ? obtain_left_diagonal : obtain_right_diagonal
   end
 
+  def check_diagonal(row, column, player_mark, direction)
+    diagonal = diagonal_coordinates(direction)
+    return unless coordinates_in_line?(row, column, diagonal)
+
+    diagonal_line = diagonal_values(direction)
+    return true if line_filled?(diagonal_line, player_mark)
+  end
+
   def coordinates_hash
     { 1 => [0, 0],
       2 => [0, 1],
@@ -134,6 +142,12 @@ class TicTacToe
     diagonal.include?(coordinates)
   end
 end
+
+t = TicTacToe.new
+t.fill_cell(0, 2, 'X')
+t.fill_cell(1, 1, 'X')
+t.fill_cell(2, 0, 'X')
+p t.winner?(0, 2, 'X')
 
 def game
   p1 = Player.new('X')
