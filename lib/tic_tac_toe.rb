@@ -91,6 +91,20 @@ class TicTacToe
     return true if line_filled?(diagonal_line, player_mark)
   end
 
+  def winner?(row, column, player_mark)
+    row_line = obtain_row(row)
+    return true if line_filled?(row_line, player_mark)
+
+    column_line = obtain_column(column)
+    return true if line_filled?(column_line, player_mark)
+
+    return true if check_diagonal(row, column, player_mark, 'left')
+
+    return true if check_diagonal(row, column, player_mark, 'right')
+
+    false
+  end
+
   def coordinates_hash
     { 1 => [0, 0],
       2 => [0, 1],
