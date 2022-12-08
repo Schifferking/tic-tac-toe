@@ -75,6 +75,10 @@ class TicTacToe
     @board.obtain_right_diagonal
   end
 
+  def print_board
+    @board.print_board
+  end
+
   def diagonal_coordinates(direction)
     direction == 'left' ? left_diagonal_coordinates : right_diagonal_coordinates
   end
