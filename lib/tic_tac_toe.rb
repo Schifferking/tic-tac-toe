@@ -63,6 +63,10 @@ class TicTacToe
     @board.obtain_column_values(column)
   end
 
+  def line_filled?(line, player_mark)
+    @board.line_filled?(line, player_mark)
+  end
+
   def coordinates_hash
     { 1 => [0, 0],
       2 => [0, 1],
