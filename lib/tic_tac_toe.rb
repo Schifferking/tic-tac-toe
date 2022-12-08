@@ -71,6 +71,10 @@ class TicTacToe
     @board.obtain_left_diagonal
   end
 
+  def obtain_right_diagonal
+    @board.obtain_right_diagonal
+  end
+
   def coordinates_hash
     { 1 => [0, 0],
       2 => [0, 1],
