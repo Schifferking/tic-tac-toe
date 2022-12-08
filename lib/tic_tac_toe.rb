@@ -163,4 +163,19 @@ class TicTacToe
   def obtain_current_player(player)
     player == player_x ? player_o : player_x
   end
+
+  def game(current_player = player_x)
+    print_welcome_message
+
+    loop do
+      print_current_player_turn(current_player.mark)
+      row, column = obtain_valid_coordinates(current_player)
+      fill_cell(row, column, current_player.mark)
+      print_board
+      return print_winner_message(current_player.mark) if winner?(row, column, current_player.mark)
+      return print_tie_message if tie?
+
+      current_player = obtain_current_player(current_player)
+    end
+  end
 end
