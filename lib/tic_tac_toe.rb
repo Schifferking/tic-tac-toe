@@ -112,6 +112,11 @@ class TicTacToe
   def right_diagonal_coordinates
     [[0, 2], [1, 1], [2, 0]]
   end
+
+  def coordinates_in_line?(row, column, diagonal)
+    coordinates = [row, column]
+    diagonal.include?(coordinates)
+  end
 end
 
 def game
