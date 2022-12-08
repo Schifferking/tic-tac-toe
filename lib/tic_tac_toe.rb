@@ -67,6 +67,10 @@ class TicTacToe
     @board.line_filled?(line, player_mark)
   end
 
+  def obtain_left_diagonal
+    @board.obtain_left_diagonal
+  end
+
   def coordinates_hash
     { 1 => [0, 0],
       2 => [0, 1],
@@ -118,6 +122,13 @@ class TicTacToe
     diagonal.include?(coordinates)
   end
 end
+
+t = TicTacToe.new
+t.fill_cell(0, 0, 'X')
+t.fill_cell(1, 1, 'X')
+t.fill_cell(2, 2, 'X')
+
+p t.winner(0,0, 'X')
 
 def game
   p1 = Player.new('X')
