@@ -54,6 +54,10 @@ class Board
      obtain_cell_value(2, 0)]
   end
 
+  def line_filled?(line, mark)
+    line.all? { |cell| cell == mark }
+  end
+
   private
 
   def create_board
