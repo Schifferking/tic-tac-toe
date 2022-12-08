@@ -12,10 +12,6 @@ class TicTacToe
     @board = Board.new
   end
 
-  def print_tie_message
-    puts "It's a tie!"
-  end
-
   def print_winner_message(player_mark)
     puts "#{player_mark}'s player wins!"
   end
