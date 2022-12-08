@@ -11,4 +11,8 @@ module Printable
     puts 'Please select a number between 1 and 9 to place a mark'
     puts '1 means the top left cell and 9 means the bottom right cell'
   end
+
+  def print_tie_message
+    puts "It's a tie!"
+  end
 end
