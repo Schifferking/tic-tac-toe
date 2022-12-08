@@ -79,6 +79,10 @@ class TicTacToe
     direction == 'left' ? left_diagonal_coordinates : right_diagonal_coordinates
   end
 
+  def diagonal_values(direction)
+    direction == 'left' ? obtain_left_diagonal : obtain_right_diagonal
+  end
+
   def coordinates_hash
     { 1 => [0, 0],
       2 => [0, 1],
