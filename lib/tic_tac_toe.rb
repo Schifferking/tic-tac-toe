@@ -103,15 +103,15 @@ class TicTacToe
       input = obtain_current_player_input(current_player)
       return obtain_cell_coordinates(input.to_i) if validate_number(input)
     end
-  
-    
-    def left_diagonal_coordinates
-      [[0, 0], [1, 1], [2, 2]]
-    end
+  end
 
-    def right_diagonal_coordinates
-      [[0, 2], [1, 1], [2, 0]]
-    end
+  def left_diagonal_coordinates
+    [[0, 0], [1, 1], [2, 2]]
+  end
+
+  def right_diagonal_coordinates
+    [[0, 2], [1, 1], [2, 0]]
+  end
 end
 
 def game
