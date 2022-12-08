@@ -1,7 +1,9 @@
 require_relative '../lib/player'
 require_relative '../lib/board'
+require_relative '../lib/printable'
 
 class TicTacToe
+  include Printable
   attr_reader :player_x, :player_o
 
   def initialize
