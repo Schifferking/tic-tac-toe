@@ -155,4 +155,8 @@ class TicTacToe
     coordinates = [row, column]
     diagonal.include?(coordinates)
   end
+
+  def obtain_current_player(player)
+    player == player_x ? player_o : player_x
+  end
 end
