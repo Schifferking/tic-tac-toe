@@ -20,17 +20,6 @@ class Board
     @board.flatten.none?(nil)
   end
 
-  def print_board
-    print_empty_line
-    board.each_with_index do |row, row_index|
-      print_empty_space
-      print_row(row, row_index)
-      print_empty_line
-      print_horizontal_line if row_index <= 1
-    end
-    print_empty_line
-  end
-
   def obtain_row_values(row)
     board[row]
   end
