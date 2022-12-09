@@ -41,4 +41,11 @@ module Printable
     end
     print_empty_space
   end
+
+  def print_row(row, row_index)
+    row.each_with_index do |_, column_index|
+      print_square_content(row_index, column_index)
+      print '| ' if column_index <= 1
+    end
+  end
 end
