@@ -67,15 +67,6 @@ class Board
     @board = Array.new(3) { Array.new(3, nil) }
   end
 
-  def print_square_content(row, column)
-    if !cell_filled?(row, column)
-      print_empty_space
-    else
-      print board[row][column].to_s
-    end
-    print_empty_space
-  end
-
   def print_row(row, row_index)
     row.each_with_index do |_, column_index|
       print_square_content(row_index, column_index)
