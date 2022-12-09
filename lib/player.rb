@@ -5,10 +5,6 @@ class Player
     @mark = mark
   end
 
-  def fill_cell(board, row, column)
-    board.fill_cell(row, column, mark)
-  end
-
   def to_s
     @mark
   end
