@@ -66,11 +66,4 @@ class Board
   def create_board
     @board = Array.new(3) { Array.new(3, nil) }
   end
-
-  def print_row(row, row_index)
-    row.each_with_index do |_, column_index|
-      print_square_content(row_index, column_index)
-      print '| ' if column_index <= 1
-    end
-  end
 end
