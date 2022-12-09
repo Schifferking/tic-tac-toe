@@ -82,8 +82,4 @@ class Board
       print '| ' if column_index <= 1
     end
   end
-
-  def print_empty_space
-    print ' '
-  end
 end
