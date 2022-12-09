@@ -212,4 +212,44 @@ describe Board do
       expect(result.length).to eq 3
     end
   end
+
+  describe '#line_filled?' do
+    context 'when a line has 2 or less same marks' do
+      subject(:board_line_incomplete) { described_class.new }
+
+      before do
+        o_mark = 'O'
+        # right diagonal
+        board_line_incomplete.board[0][2] = nil
+        board_line_incomplete.board[1][1] = o_mark
+        board_line_incomplete.board[2][0] = o_mark
+      end
+
+      it 'returns false' do
+        o_mark = 'O'
+        right_diagonal = [nil, o_mark, o_mark]
+        result = board_line_incomplete.line_filled?(right_diagonal, o_mark)
+        expect(result).to be false
+      end
+    end
+
+    context 'when a line has 3 same marks' do
+      subject(:board_line_complete) { described_class.new }
+
+      before do
+        x_mark = 'X'
+        # right column
+        board_line_complete.board[0][2] = x_mark
+        board_line_complete.board[1][2] = x_mark
+        board_line_complete.board[2][2] = x_mark
+      end
+
+      it 'returns true' do
+        x_mark = 'X'
+        right_column = [x_mark, x_mark, x_mark]
+        result = board_line_complete.line_filled?(right_column, x_mark)
+        expect(result).to be true
+      end
+    end
+  end
 end
