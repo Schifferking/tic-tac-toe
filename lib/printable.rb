@@ -19,4 +19,8 @@ module Printable
   def print_winner_message(player_mark)
     puts "#{player_mark}'s player wins!"
   end
+
+  def print_empty_line
+    puts ''
+  end
 end
