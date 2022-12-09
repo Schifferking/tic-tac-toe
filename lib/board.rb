@@ -1,4 +1,7 @@
+require_relative '../lib/printable'
+
 class Board
+  include Printable
   attr_reader :board
 
   def initialize
