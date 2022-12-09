@@ -83,10 +83,6 @@ class Board
     end
   end
 
-  def print_empty_line
-    puts ''
-  end
-
   def print_horizontal_line
     print ' ---------'
     print_empty_line
