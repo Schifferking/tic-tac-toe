@@ -43,15 +43,6 @@ describe TicTacToe do
         expect(tic_tac_toe_above_nine.validate_number(number)).to be false
       end
     end
-
-    context 'when the number is between 1 and 9' do
-      subject(:tic_tac_toe_valid_number) { described_class.new }
-
-      it 'returns the number' do
-        number = 7
-        expect(tic_tac_toe_valid_number.validate_number(number)).to eq number
-      end
-    end
   end
 
   describe '#obtain_cell_value' do
