@@ -133,4 +133,34 @@ describe TicTacToe do
       end
     end
   end
+
+  describe '#coordinates_in_line?' do
+    context 'when the coordinates are not in a diagonal' do
+      subject(:tic_tac_toe_top_left_coordinates) { described_class.new }
+
+      it 'returns false' do
+        row = 0
+        column = 1
+        # left diagonal
+        diagonal = [[0, 0], [1, 1], [2, 2]]
+        result = tic_tac_toe_top_left_coordinates
+                 .coordinates_in_line?(row, column, diagonal)
+        expect(result).to eq false
+      end
+    end
+
+    context 'when the coordinates are in a diagonal' do
+      subject(:tic_tac_toe_coordinates_in_diagonal) { described_class.new }
+
+      it 'returns true' do
+        row = 2
+        column = 0
+        # right diagonal
+        diagonal = [[0, 2], [1, 1], [2, 0]]
+        result = tic_tac_toe_coordinates_in_diagonal
+                 .coordinates_in_line?(row, column, diagonal)
+        expect(result).to eq true
+      end
+    end
+  end
 end
