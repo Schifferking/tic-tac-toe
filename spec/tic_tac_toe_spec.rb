@@ -95,4 +95,42 @@ describe TicTacToe do
       expect(tic_tac_toe_fill_cell.fill_cell(row, column, mark)).to eq mark
     end
   end
+
+  describe '#obtain_valid_coordinates' do
+    context 'when the player entered a valid input' do
+      subject(:tic_tac_toe_one_iteration) { described_class.new }
+
+      before do
+        number = '3'
+        allow(tic_tac_toe_one_iteration)
+          .to receive(:obtain_current_player_input).and_return(number)
+      end
+
+      it 'prints the prompt message once and ends the loop' do
+        player = instance_double('player', mark: 'O')
+        expect(tic_tac_toe_one_iteration)
+          .to receive(:print_prompt_message).once
+        tic_tac_toe_one_iteration.obtain_valid_coordinates(player)
+      end
+    end
+
+    context 'when the player entered an invalid input and a valid input' do
+      subject(:tic_tac_toe_two_iterations) { described_class.new }
+
+      before do
+        number_word = 'one'
+        number = '1'
+        allow(tic_tac_toe_two_iterations)
+          .to receive(:obtain_current_player_input)
+          .and_return(number_word, number)
+      end
+
+      it 'prints the prompt message twice and ends the loop' do
+        player = instance_double('player', mark: 'x')
+        expect(tic_tac_toe_two_iterations)
+          .to receive(:print_prompt_message).twice
+        tic_tac_toe_two_iterations.obtain_valid_coordinates(player)
+      end
+    end
+  end
 end
