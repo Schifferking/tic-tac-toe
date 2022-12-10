@@ -175,4 +175,66 @@ describe TicTacToe do
       end
     end
   end
+
+  describe '#game' do
+    context "when player 'x' places 3 marks" do
+      subject(:tic_tac_toe_game_five) { described_class.new }
+
+      before do
+        allow(tic_tac_toe_game_five).to receive(:print_welcome_message)
+        allow(tic_tac_toe_game_five).to receive(:print_current_player_turn)
+        allow(tic_tac_toe_game_five).to receive(:obtain_valid_coordinates)
+        allow(tic_tac_toe_game_five).to receive(:fill_cell)
+        allow(tic_tac_toe_game_five)
+          .to receive(:winner?).and_return(false, false, false, false, true)
+        allow(tic_tac_toe_game_five).to receive(:print_winner_message)
+      end
+
+      it 'lasts 5 turns' do
+        expect(tic_tac_toe_game_five).to receive(:print_board).exactly(5).times
+        tic_tac_toe_game_five.game
+      end
+    end
+
+    context "when player 'o' places 4 marks" do
+      subject(:tic_tac_toe_game_seven) { described_class.new }
+
+      before do
+        allow(tic_tac_toe_game_seven).to receive(:print_welcome_message)
+        allow(tic_tac_toe_game_seven).to receive(:print_current_player_turn)
+        allow(tic_tac_toe_game_seven).to receive(:obtain_valid_coordinates)
+        allow(tic_tac_toe_game_seven).to receive(:fill_cell)
+        allow(tic_tac_toe_game_seven)
+          .to receive(:winner?)
+          .and_return(false, false, false, false, false, false, true)
+        allow(tic_tac_toe_game_seven).to receive(:print_winner_message)
+      end
+
+      it 'lasts 7 turns' do
+        expect(tic_tac_toe_game_seven).to receive(:print_board).exactly(7).times
+        tic_tac_toe_game_seven.game
+      end
+    end
+
+    context 'when the game is a tie' do
+      subject(:tic_tac_toe_game_tie) { described_class.new }
+
+      before do
+        allow(tic_tac_toe_game_tie).to receive(:print_welcome_message)
+        allow(tic_tac_toe_game_tie).to receive(:print_current_player_turn)
+        allow(tic_tac_toe_game_tie).to receive(:obtain_valid_coordinates)
+        allow(tic_tac_toe_game_tie).to receive(:fill_cell)
+        allow(tic_tac_toe_game_tie).to receive(:print_board)
+        allow(tic_tac_toe_game_tie).to receive(:winner?).and_return(false)
+        allow(tic_tac_toe_game_tie).to receive(:tie?)
+          .and_return(false, false, false, false, false, false, false, false,
+                      false, true)
+      end
+
+      it 'lasts 9 turns' do
+        expect(tic_tac_toe_game_tie).to receive(:print_tie_message).once
+        tic_tac_toe_game_tie.game
+      end
+    end
+  end
 end
