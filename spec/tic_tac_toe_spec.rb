@@ -29,18 +29,18 @@ describe TicTacToe do
     context 'when the number is lesser than 1' do
       subject(:tic_tac_toe_below_one) { described_class.new }
 
-      it 'returns nil' do
+      it 'returns false' do
         number = 0
-        expect(tic_tac_toe_below_one.validate_number(number)).to be nil
+        expect(tic_tac_toe_below_one.validate_number(number)).to be false
       end
     end
 
     context 'when the number is greater than 9' do
       subject(:tic_tac_toe_above_nine) { described_class.new }
 
-      it 'returns nil' do
+      it 'returns false' do
         number = 10
-        expect(tic_tac_toe_above_nine.validate_number(number)).to be nil
+        expect(tic_tac_toe_above_nine.validate_number(number)).to be false
       end
     end
 
