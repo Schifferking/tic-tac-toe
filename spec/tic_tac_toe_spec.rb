@@ -43,6 +43,36 @@ describe TicTacToe do
         expect(tic_tac_toe_above_nine.validate_number(number)).to be false
       end
     end
+
+    context 'when the cell is not filled' do
+      subject(:tic_tac_toe_number_invalid) { described_class.new }
+
+      it 'returns false' do
+        number = 9
+        expect(tic_tac_toe_number_invalid.validate_number(number)).to be false
+      end
+    end
+
+    context 'when the cell is filled' do
+      subject(:tic_tac_toe_number_valid) { described_class.new }
+
+      before do
+        row = 1
+        column = 1
+        number = 5
+        allow(tic_tac_toe_number_valid)
+          .to receive(:number?).with(number).and_return(true)
+        allow(tic_tac_toe_number_valid)
+          .to receive(:number_in_range?).with(number).and_return(true)
+        allow(tic_tac_toe_number_valid)
+          .to receive(:cell_filled?).with(row, column).and_return(false)
+      end
+
+      it 'returns true' do
+        number = 5
+        expect(tic_tac_toe_number_valid.validate_number(number)).to be true
+      end
+    end
   end
 
   describe '#obtain_cell_value' do
