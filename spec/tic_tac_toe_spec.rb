@@ -163,4 +163,16 @@ describe TicTacToe do
       end
     end
   end
+
+  describe '#obtain_current_player' do
+    context 'when the argument is a player object' do
+      subject(:tic_tac_toe_current_player_x) { described_class.new }
+
+      it 'returns a player object' do
+        player = instance_double('player', mark: 'X')
+        result = tic_tac_toe_current_player_x.obtain_current_player(player)
+        expect(result).to be_an_instance_of Player
+      end
+    end
+  end
 end
